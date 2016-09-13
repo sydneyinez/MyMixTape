@@ -1,28 +1,31 @@
-$("#spotify_submit").click(function(){
+$("#playlist_submit").click(function(){
 
-        var playlist = $("#playlist").val();
+        var song = $("#playlist").val();
 
         var queryURL = "https://api.spotify.com/v1/search?q=" + playlist + "&type=playlist";
 
         $.ajax({url: queryURL, method: 'GET'})
         .done(function(response) {
             if(response.length <1) {
-                $("#output").html("Sorry, no playlist was found : (");
+                $("#output").html("Sorry, no song was found : (");
             } else {
-                $("output").html(JSON.stringify(response));
+                console.log(response);
+                var thePlaylist = response.playlist.items[0];
+                //$("#output").html("<div class='pretty'><a href=" + the.href + ">More Info</a></div><br>" + "<h4>" + thePlaylist.name + "</h4></div>");
+                //console.log(thePlaylist);
             }
-            var playlistContainer = $('<div class="playlist_Container">');
-            $(".pretty_playlist_output").append(playlistContainer);
+            // var artistContainer = $('<div class="artist_Container">');
+            // $(".pretty_artist_output").append(artistContainer);
 
-            for(var prop in response) {
-                var element;
-                if (prop == "Playlist" && response[prop] != "N/A") {
-                    element = $("<img class='Playlist'>").attr("src", response[prop]);
-                } else {
-                    element = $("<h3 class='Playlist'>").text(prop + ": " + response[prop]);
-                }
+            // for(var prop in response) {
+            //     var element;
+            //     if (prop == "Artist" && response[prop] != "N/A") {
+            //         element = $("<img class='artist'>").attr("src", response[prop]);
+            //     } else {
+            //         element = $("<h3 class='artist'>").text(prop + ": " + response[prop]);
+            //     }
      
-                playlistContainer.append(element);
-            }
-        });
-    });
+            //     artistContainer.append(element);
+            // }
+        })
+         });

@@ -285,3 +285,8 @@ a:hover, a:active {
 		margin: 2% auto;
 	}
 }
+
+#output {
+	color: black;
+	font-size: 30px;
+}

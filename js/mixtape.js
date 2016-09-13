@@ -9,7 +9,7 @@ $("#spotify_submit").click(function(){
             if(response.length <1) {
                 $("#output").html("Sorry, no artist was found : (");
             } else {
-                $("output").html(JSON.stringify(response));
+                $("#output").html(JSON.stringify(response));
             }
             var artistContainer = $('<div class="artist_Container">');
             $(".pretty_artist_output").append(artistContainer);
